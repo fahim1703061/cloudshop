@@ -19,5 +19,9 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": true
         // "source.fixAll.eslint": false                  //disable only for eslint
-    }
+    },
+
+    //auto path complete settings
+
+    "path-autocomplete.extensionOnImport": true
 }
