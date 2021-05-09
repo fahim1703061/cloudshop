@@ -12,5 +12,12 @@
     //prettier settings
 
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
+
+    //eslint settings
+
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+        // "source.fixAll.eslint": false                  //disable only for eslint
+    }
 }
