@@ -23,5 +23,8 @@
 
     //auto path complete settings
 
-    "path-autocomplete.extensionOnImport": true
+    "path-autocomplete.extensionOnImport": true,
+    "python.pythonPath": "C:\\Users\\MD. Fahim Faisal\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe",
+    "django.snippets.exclude": ["cms", "wagtail"],
+    "django.snippets.use": true
 }
