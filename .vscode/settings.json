@@ -43,5 +43,13 @@
     "path-autocomplete.extensionOnImport": true,
     "python.pythonPath": "C:\\Users\\MD. Fahim Faisal\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
     "django.snippets.exclude": ["cms", "wagtail"],
-    "django.snippets.use": true
+    "django.snippets.use": true,
+    "html.format.templating": true,
+
+    //django-template settings
+    //"files.associations": { "*.html": "html" },
+    //"emmet.includeLanguages": { "django-html": "html" },
+    
+    
+    "emmet.triggerExpansionOnTab": true
 }

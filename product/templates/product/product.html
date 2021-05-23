@@ -1,0 +1,69 @@
+{% extends 'base/navbar.html' %}
+{% load static %}
+{% block addtionalstyles %}
+<link rel="stylesheet" href="{% static 'product/css/product.css' %}">
+
+{% endblock addtionalstyles %}
+
+
+
+{% block content %}
+
+<div class="row justify-content-center justify-content-sm-start">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-7">
+
+        <img src="{% static 'product/images/placeholder.png' %}" alt="product image" class="thumbnail">
+
+        <div class="box-element product">
+            <h6 class="product-name"><strong>Product</strong></h6>
+            <hr>
+            <div class="">
+                <button class="btn btn-outline-secondary add-btn justify-content-start">Add to Cart</button>
+                <a class="btn btn-outline-success justify-content-start " href="#">View</a>
+                <h5 class="product-price justify-content-end"><strong>20Tk.</strong></h5>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6 col-7">
+
+        <img src="{% static 'product/images/placeholder.png' %}" alt="product image" class="thumbnail">
+
+        <div class="box-element product">
+            <h6 class="product-name"><strong>Product</strong></h6>
+            <hr>
+            <div class="">
+                <button class="btn btn-outline-secondary add-btn justify-content-start">Add to Cart</button>
+                <a class="btn btn-outline-success justify-content-start " href="#">View</a>
+                <h5 class="product-price justify-content-end"><strong>20Tk.</strong></h5>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-6 col-7">
+
+        <img src="{% static 'product/images/placeholder.png' %}" alt="product image" class="thumbnail">
+
+        <div class="box-element product">
+            <h6 class="product-name"><strong>Product</strong></h6>
+            <hr>
+            <div class="">
+                <button class="btn btn-outline-secondary add-btn justify-content-start">Add to Cart</button>
+                <a class="btn btn-outline-success justify-content-start " href="#">View</a>
+                <h5 class="product-price justify-content-end"><strong>Tk 20</strong></h5>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+{% endblock content %}
