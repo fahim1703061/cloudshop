@@ -6,3 +6,8 @@ from django.shortcuts import render
 def product(request):
     context = {}
     return render(request, 'product/product.html', context)
+
+
+def cart(request):
+    context = {}
+    return render(request, 'product/cart.html', context)

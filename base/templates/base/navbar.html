@@ -32,7 +32,7 @@
             <div class="container-fluid">
                 <span class="nav-item humburger" style="font-size: 30px; cursor: pointer"
                     onclick="openNav()">&#9776;</span>
-                <a class="navbar-brand nav-item" href="#">Cloudshop</a>
+                <a class="navbar-brand nav-item" href="{% url 'home' %}">Cloudshop</a>
 
                 <!-- <div style="width: 100%;">
             <input class="form-control search" type="search" placeholder="Search" aria-label="Search">
@@ -57,7 +57,7 @@
 
                 <!-- cart starts -->
                 <div class="nav-item">
-                    <span><a href="#" class="nav-link cartlink"><i class="
+                    <span><a href="{% url 'cart' %}" class="nav-link cartlink"><i class="
                                         fa fa-shopping-cart fa-lg
                                         d-inline
                                         badge

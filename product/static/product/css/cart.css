@@ -1,0 +1,48 @@
+.box-element {
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: hsl(0, 0%, 30%);
+}
+.checkout-btn {
+    float: right;
+    margin: 5px;
+    background-color: #6e6c6a7c;
+}
+.checkout-btn:hover {
+    background: #414141;
+}
+.cart-row {
+    display: flex;
+    align-items: flex-stretch;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ececec;
+}
+.row-image {
+    width: 100px;
+}
+.chg-quantity {
+    width: 12px;
+    cursor: pointer;
+    display: block;
+    margin-top: 5px;
+    transition: 0.1s;
+}
+
+.chg-quantity:hover {
+    opacity: 0.6;
+}
+.quantity {
+    display: inline-block;
+    font-weight: 700;
+    padding-right: 10px;
+}
