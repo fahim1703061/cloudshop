@@ -49,7 +49,7 @@
     //django-template settings
     //"files.associations": { "*.html": "html" },
     //"emmet.includeLanguages": { "django-html": "html" },
-    
-    
-    "emmet.triggerExpansionOnTab": true
+
+    "emmet.triggerExpansionOnTab": true,
+    "html.format.wrapLineLength": 120
 }
