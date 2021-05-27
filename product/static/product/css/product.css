@@ -1,3 +1,7 @@
+body {
+    background-color: hsl(0, 0%, 98%);
+}
+
 .box-element {
     box-shadow: hsl(0, 0%, 80%) 0 0 16px;
     background-color: #fff;
