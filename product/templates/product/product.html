@@ -23,7 +23,8 @@
                 <h6 class="product-name"><strong>{{product.name}}</strong></h6>
                 <hr>
                 <div class="">
-                    <button class="btn btn-outline-secondary add-btn justify-content-start">Add to Cart</button>
+                    <button data-product={{product.id}} data-action="add"
+                        class="btn btn-outline-secondary add-btn justify-content-start update-cart">Add to Cart</button>
                     <a class="btn btn-outline-success justify-content-start " href="#">View </a>
                     <h5 class="product-price justify-content-end"><strong>Tk {{product.price|floatformat:2}}</strong>
                     </h5>
@@ -44,3 +45,10 @@
 
 
 {% endblock content %}
+
+{% block additionalScripts %}
+
+<script src="{% static 'product/js/cart.js' %}"></script>
+
+
+{% endblock additionalScripts %}

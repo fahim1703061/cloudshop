@@ -51,5 +51,6 @@
     //"emmet.includeLanguages": { "django-html": "html" },
 
     "emmet.triggerExpansionOnTab": true,
-    "html.format.wrapLineLength": 120
+    "html.format.wrapLineLength": 120,
+    "files.autoSave": "onFocusChange"
 }
