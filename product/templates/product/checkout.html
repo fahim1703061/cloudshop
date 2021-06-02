@@ -3,6 +3,10 @@
 {% block addtionalstyles %}
 <link rel="stylesheet" href="{% static 'product/css/checkout.css' %}">
 
+<!--phone country code functionality-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
 {% endblock addtionalstyles %}
 
 {% block content %}
@@ -42,7 +46,8 @@
     <!--shiping details-->
     <div class="col-lg-6">
         <div class="box-element" id="form-wrapper">
-            <form id="form">
+            <form id="form" action="" method="post">
+                {% csrf_token %}
                 <!--Digital products-->
                 <div id="user-info">
                     <div class="form-field">
@@ -59,8 +64,8 @@
                     <p>Shipping Information:</p>
                     <hr>
                     <div class="form-field">
-                        <input required class="form-control" type="text" name="phone-no"
-                            placeholder="Phone no.(with country code)">
+                        <input required class="form-control" type="tel" id="phone" name="phone" placeholder="Phone no."
+                            value="">
                     </div>
                     <div class="form-field">
                         <input class="form-control" type="text" name="address" placeholder="Address..">
@@ -78,21 +83,62 @@
                         <input class="form-control" type="text" name="country" placeholder="Country..">
                     </div>
                     <div style="padding: 5px;" class="col-12">
-                        <input class="form-control" type="text" name="country" placeholder="Additional Information..">
+                        <input class="form-control" type="text" name="additionalInfo"
+                            placeholder="Additional Information..">
                     </div>
                 </div>
 
                 <hr>
                 <input id="form-button" class="btn btn-success col-12" type="submit" value="Continue">
+                <br>
+                <div class="box-element hidden" id="payment-info">
+                    <small>Payment Options</small>
+
+                    <hr>
+                    <h5>Cash on delivery</h5>
+                    <input id="form-button" class="btn btn-success col-12" type="submit" name="place-order"
+                        value="Place Order"></input>
+                </div>
             </form>
         </div>
 
-        <br>
-        <div class="box-element hidden" id="payment-info">
-            <small>Paypal Options</small>
-        </div>
     </div>
 
 </div>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>
+
+<!--Make the plugin location-aware-->
+<!--https://www.twilio.com/blog/international-phone-number-input-html-javascript-->
+
+<script type="text/javascript">
+    var shipping = '{{order.shipping}}'
+
+    if (shipping == 'False') {
+        document.getElementById('shipping-info').innerHTML = ''
+    }
+
+    var form = document.getElementById('form')
+    form.addEventListener('submit', function (e) {
+        //e.preventDefault()
+        if (document.getElementById('form-button').classList.contains("hidden")) {
+
+            console.log('Form Submitted...')
+        } else {
+            e.preventDefault()
+            const phoneNumber = phoneInput.getNumber();
+            document.getElementById('phone').value = phoneNumber;
+
+            document.getElementById('form-button').classList.add("hidden");
+            document.getElementById('payment-info').classList.remove("hidden");
+        }
+    })
+</script>
+
 
 {% endblock content %}

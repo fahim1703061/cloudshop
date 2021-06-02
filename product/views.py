@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Product, User, Customer, Order, OrderItem
 import json
+import datetime
+from .forms import ShippingAddressForm
 
 # Create your views here.
 
@@ -16,7 +18,7 @@ def product(request):
 
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
     products = Product.objects.all()
     context = {'products': products, 'cartItems': cartItems}
@@ -33,7 +35,7 @@ def cart(request):
 
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
         # print('not authenticaed')
 
@@ -42,16 +44,42 @@ def cart(request):
 
 
 def checkout(request):
+    print(request.POST)
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(
             customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
+        transaction_id = datetime.datetime.now().timestamp()
+        order.transaction_id = transaction_id
+        order.complete = True
+
+        form = ShippingAddressForm()
+        if request.method == 'POST':
+
+            print('post')
+            form = ShippingAddressForm(request.POST)
+            if form.is_valid():  # All validation rules pass
+                # Process the data in form.cleaned_data
+                # ...
+
+                new_object = form.save(commit=False)
+                order.save()
+                new_object.customer = customer
+                new_object.order = order
+                new_object.save()
+
+                print(form.cleaned_data["address"])
+                print(new_object.phone)
+
+                return redirect('/')
+            else:
+                print('not valid............')
 
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
         # print('not authenticaed')
 

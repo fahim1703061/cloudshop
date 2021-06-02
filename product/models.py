@@ -55,6 +55,15 @@ class Order(models.Model):
         total = sum([item.quantity for item in orderitems])
         return total
 
+    @property
+    def shipping(self):
+        shipping = False
+        orderitems = self.orderitem_set.all()
+        for i in orderitems:
+            if i.product.digital == False:
+                shipping = True
+        return shipping
+
 
 class OrderItem(models.Model):
     product = models.ForeignKey(
@@ -74,10 +83,18 @@ class ShippingAddress(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-    address = models.CharField(max_length=200, null=False)
-    city = models.CharField(max_length=200, null=False)
-    state = models.CharField(max_length=200, null=False)
-    zipcode = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, null=True)
+    email = models.EmailField(max_length=200, null=True)
+    phone = models.CharField(
+        max_length=200, default=0, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True)
+    city = models.CharField(max_length=200, null=True)
+    state = models.CharField(max_length=200, null=True)
+    zipcode = models.CharField(max_length=200, null=True)
+    country = models.CharField(max_length=200, null=True)
+    additionalInfo = models.CharField(max_length=200, null=True)
+    paymentMethod = models.CharField(
+        max_length=200, default='Cash on delivery', null=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
