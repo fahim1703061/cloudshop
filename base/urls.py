@@ -4,7 +4,8 @@ from . import views
 
 urlpatterns = [
     path('baselite/', views.test, name='test'),
-    # path('', views.index, name='index'),
+    path('index/', views.index, name='index'),
     path('', views.home, name='home'),
 
+    # path('ssl_req/', views.sslreq, name='sslreq')
 ]

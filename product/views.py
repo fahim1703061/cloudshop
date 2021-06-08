@@ -65,6 +65,7 @@ def checkout(request):
                 # ...
 
                 new_object = form.save(commit=False)
+                order.data_ordered = datetime.datetime.now()
                 order.save()
                 new_object.customer = customer
                 new_object.order = order
@@ -113,3 +114,31 @@ def updateItem(request):
         orderItem.delete()
 
     return JsonResponse('Item was added', safe=False)
+
+
+def orders(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        orderget, created = Order.objects.get_or_create(
+            customer=customer, complete=False)
+        items = orderget.orderitem_set.all()
+        cartItems = orderget.get_cart_items
+
+        pastOrders = Order.objects.filter(
+            customer=customer, complete=True)
+
+        # customer = request.user.customer
+        pastOrders = list(reversed(pastOrders))
+        print(pastOrders[0].id)
+        print(datetime.datetime.now())
+
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+        cartItems = order['get_cart_items']
+        pastOrders = []
+    products = Product.objects.all()
+    context = {'products': products,
+               'cartItems': cartItems, 'pastOrders': pastOrders}
+
+    return render(request, 'product/orders.html', context)

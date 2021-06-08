@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>Say no hello world</h1>
-    </body>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Say no hello world</h1>
+    {% csrf_token %}
+    <button class="" id="sslczPayBtn" token="" postdata="" order="1234" endpoint="{% url 'index' %}"> Pay
+        Now
+    </button>
+    {% csrf_token %}
+
+    <!--
+
+
+    https://pypi.org/project/sslcommerz-lib/
+
+    https://developer.sslcommerz.com/doc/v4/#initPay-section
+-->
+    <script>
+        (function (window, document) {
+            var loader = function () {
+                var script = document.createElement("script"),
+                    tag = document.getElementsByTagName("script")[0];
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36)
+                    .substring(7);
+                tag.parentNode.insertBefore(script, tag);
+            };
+
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload",
+                loader);
+        })(window, document);
+    </script>
+</body>
+
 </html>
