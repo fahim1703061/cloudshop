@@ -1,0 +1,67 @@
+{% extends 'base/navbar.html' %}
+{% load static %}
+{% block addtionalstyles %}
+
+<link rel="stylesheet" href="{% static 'shop/css/shop.css' %}">
+
+{% endblock addtionalstyles %}
+
+{% block content %}
+
+<main>
+
+    <div class="shop-list">
+
+        <div class="shop-list-head">
+
+            <h3 class="shop-list-head-title">Shops</h3>
+
+        </div>
+        <hr>
+        <div class="shop-list-body">
+            <div class="row justify-content-start">
+
+                {% for shop in shops %}
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 ">
+
+                    <a href="{% url 'home' %}">
+                        <div class="card mycard">
+
+                            <img src="{{shop.imageURL}}" alt="shop image" class="thumbnail">
+
+                            <div class=" shop box-element card-body">
+                                <hr>
+                                <h6 class="shop-name"><strong>{{shop.name}}</strong></h6>
+
+
+                            </div>
+
+
+                        </div>
+                    </a>
+
+                </div>
+
+
+                {% comment %} <li>
+
+                </li> {% endcomment %}
+
+
+                {% endfor %}
+                <ul>
+
+                </ul>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock content %}

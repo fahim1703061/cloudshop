@@ -1,0 +1,50 @@
+.shop-list-head-title {
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+    font-family: Uni Neue, -apple-system, BlinkMacSystemFont, Segoe UI,
+        Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+        Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+.box-element {
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.thumbnail {
+    width: 100% !important;
+    height: 140px !important;
+    -webkit-box-shadow: -1px -3px 5px -2px rgba(214, 214, 214, 1);
+    -moz-box-shadow: -1px -3px 5px -2px rgba(214, 214, 214, 1);
+    -ms-box--shadow: -1px -3px 5px -2px rgba(214, 214, 214, 1);
+    -o-box--shadow: -1px -3px 5px -2px rgba(214, 214, 214, 1);
+    box-shadow: -1px -3px 5px -2px rgba(214, 214, 214, 1);
+}
+
+.shop {
+    border-radius: 0 0 4px 4px;
+}
+.shop-name {
+    color: hsl(0, 0%, 30%);
+    font-size: 0.875rem;
+}
+
+.col-lg-4,
+.col-lg-6,
+.col-lg-8,
+.col-lg-12 {
+    margin-top: 20px;
+}
+.mycard {
+    border: 0px;
+    margin-top: 20px;
+}
+li {
+    list-style: none;
+    display: flex;
+}
+.shop-list-body a {
+    text-decoration: none;
+    display: inline;
+}
