@@ -11,35 +11,41 @@ from .forms import ShippingAddressForm
 def product(request):
     if request.user.is_authenticated:
         customer = request.user.customer
+        customerName = customer.name
         order, created = Order.objects.get_or_create(
             customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
 
     else:
+        customerName = ''
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
     products = Product.objects.all()
-    context = {'products': products, 'cartItems': cartItems}
+    context = {'products': products, 'cartItems': cartItems,
+               'customerName': customerName}
     return render(request, 'product/product.html', context)
 
 
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer
+        customerName = customer.name
         order, created = Order.objects.get_or_create(
             customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
 
     else:
+        customerName = ''
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
         # print('not authenticaed')
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    context = {'items': items, 'order': order,
+               'cartItems': cartItems, 'customerName': customerName}
     return render(request, 'product/cart.html', context)
 
 
@@ -47,6 +53,7 @@ def checkout(request):
     print(request.POST)
     if request.user.is_authenticated:
         customer = request.user.customer
+        customerName = customer.name
         order, created = Order.objects.get_or_create(
             customer=customer, complete=False)
         items = order.orderitem_set.all()
@@ -79,12 +86,14 @@ def checkout(request):
                 print('not valid............')
 
     else:
+        customerName = ''
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
         # print('not authenticaed')
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    context = {'items': items, 'order': order,
+               'cartItems': cartItems, 'customerName': customerName}
     return render(request, 'product/checkout.html', context)
 
 
@@ -119,6 +128,8 @@ def updateItem(request):
 def orders(request):
     if request.user.is_authenticated:
         customer = request.user.customer
+        customerName = customer.name
+        # print(customerName)
         orderget, created = Order.objects.get_or_create(
             customer=customer, complete=False)
         items = orderget.orderitem_set.all()
@@ -133,12 +144,13 @@ def orders(request):
         print(datetime.datetime.now())
 
     else:
+        customerName = ''
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
         pastOrders = []
     products = Product.objects.all()
     context = {'products': products,
-               'cartItems': cartItems, 'pastOrders': pastOrders}
+               'cartItems': cartItems, 'pastOrders': pastOrders, 'customerName': customerName}
 
     return render(request, 'product/orders.html', context)
