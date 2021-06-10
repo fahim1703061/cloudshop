@@ -5,4 +5,4 @@ from .models import ShippingAddress
 class ShippingAddressForm(ModelForm):
     class Meta:
         model = ShippingAddress
-        exclude = ['customer', 'order', 'date_added', 'paymentMethod']
+        exclude = ['customer', 'order', 'date_added']

@@ -78,10 +78,14 @@ def checkout(request):
                 new_object.order = order
                 new_object.save()
 
-                print(form.cleaned_data["address"])
+                print(form.cleaned_data["paymentMethod"])
                 print(new_object.phone)
 
-                return redirect('/')
+                if form.cleaned_data["paymentMethod"] == 'SSLCommerz':
+                    return redirect('index')
+                else:
+                    return redirect('/')
+
             else:
                 print('not valid............')
 
@@ -140,7 +144,7 @@ def orders(request):
 
         # customer = request.user.customer
         pastOrders = list(reversed(pastOrders))
-        print(pastOrders[0].id)
+        print(pastOrders[0].get_cart_total)
         print(datetime.datetime.now())
 
     else:

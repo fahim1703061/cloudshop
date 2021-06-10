@@ -11,17 +11,35 @@ import datetime
 @csrf_exempt
 def test(request):
 
-    return HttpResponse("hello world! {{datetime.datetime.now()}}")
+    return HttpResponse("payment Completed.Go to <a href=\"http://127.0.0.1:8000\">cloudshop</a>")
 
 
 def index(request):
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        customerName = customer.name
+        # print(customerName)
+
+        pastOrders = Order.objects.filter(
+            customer=customer, complete=True)
+
+        # customer = request.user.customer
+        pastOrders = list(reversed(pastOrders))
+        print(pastOrders[0].get_cart_total)
+        print(datetime.datetime.now())
+        totalAmount = pastOrders[0].get_cart_total
+
+    else:
+        customerName = ''
+        totalAmount = 0
 
     from sslcommerz_lib import SSLCOMMERZ
     settings = {'store_id': 'testbox',
                 'store_pass': 'qwerty', 'issandbox': True}
     sslcommez = SSLCOMMERZ(settings)
     post_body = {}
-    post_body['total_amount'] = 180.26
+    post_body['total_amount'] = totalAmount
     post_body['currency'] = "BDT"
     post_body['tran_id'] = "12345"
     post_body['success_url'] = "http://127.0.0.1:8000/baselite/"
