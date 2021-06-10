@@ -20,7 +20,6 @@ class Product(models.Model):
     from shop.models import Shop
     shop = models.ForeignKey(
         Shop, on_delete=models.SET_NULL, null=True, blank=True)
-    data_ordered = models.DateTimeField(default=now, blank=True)
     name = models.CharField(max_length=200, null=True)
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True, blank=False)

@@ -1,0 +1,52 @@
+.shop-profile {
+    width: auto;
+    max-height: 128px;
+    max-width: 200px;
+}
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.shop-profile-button {
+    background-color: transparent;
+    background-image: none;
+    cursor: pointer;
+    border: 0px;
+}
+.shop-profile-button:hover {
+    cursor: pointer;
+}
+.STajY {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 22px;
+    padding: 4px 24px;
+    background: #fff0ef;
+    border: 1px solid #c81218;
+    color: #c81218;
+    border-radius: 25px;
+    margin-right: 12px;
+}
+.ripple {
+    background: rgba(255, 255, 255, 0.3) none repeat scroll 0% 0%;
+    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    z-index: 1;
+}
+.chat-button {
+    border-radius: 25px;
+}
+.follow-bell {
+    margin-top: 3px;
+}
+.shop-name {
+    font-size: 1.78rem;
+}

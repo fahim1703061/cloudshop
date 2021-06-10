@@ -48,3 +48,8 @@ li {
     text-decoration: none;
     display: inline;
 }
+.shop-profile {
+    width: auto;
+    max-height: 128px;
+    max-width: 200px;
+}

@@ -22,10 +22,10 @@
             <div class="row justify-content-start">
 
                 {% for shop in shops %}
-                <div class="col-lg-2 col-md-3 col-sm-4 col-6 ">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
 
-                    <a href="{% url 'home' %}">
-                        <div class="card mycard">
+                    <a href="{% url 'shop_product' shop.shopurl %}">
+                        <div class="card mycard h-100">
 
                             <img src="{{shop.imageURL}}" alt="shop image" class="thumbnail">
 
@@ -35,6 +35,7 @@
 
 
                             </div>
+
 
 
                         </div>
